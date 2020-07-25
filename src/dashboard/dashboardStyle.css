@@ -13,6 +13,7 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .productStyle {
+  width : "90%";
   background: white;
   margin: 30px;
   padding: 40px;

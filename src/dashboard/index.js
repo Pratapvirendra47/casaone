@@ -44,11 +44,11 @@ const getProductListing = () => {
 const getProductArray = (index, updateProductDetails, productArray, deleteProduct) => {
   return (
     <tr onChange={(e)=> {updateProductDetails(index, e)}} style={{lineHeight: "70px"}}>
-      <td><input style={{width: "120px"}} type="number" name="productId" value={productArray[index]["productId"]} placeholder="Enter Product Id"   /></td>
-      <td><input style={{width: "260px"}}type = "text" name="productName" value={productArray[index]["productName"]} placeholder= "Enter Product Name"/></td>
-      <td><input style={{width: "120px"}} type="number" name="productQuantity" value={productArray[index]["productQuantity"]} placeholder="Enter QTY"/></td>
-      <td><input style={{width: "120px"}} type="number" name="productUnitPrice" value={productArray[index]["productUnitPrice"]} placeholder="Unit Price"/></td>
-      <td><input style={{width: "120px"}} type="number" name="productTotalPrice" value={productArray[index]["productTotalPrice"]} placeholder="total Price" disabled/></td>
+      <td><input style={{width: "88%"}} type="number" name="productId" value={productArray[index]["productId"]} placeholder="Enter Product Id"   /></td>
+      <td><input style={{width: "90%"}}type = "text" name="productName" value={productArray[index]["productName"]} placeholder= "Enter Product Name"/></td>
+      <td><input style={{width: "88%"}} type="number" name="productQuantity" value={productArray[index]["productQuantity"]} placeholder="Enter QTY"/></td>
+      <td><input style={{width: "88%"}} type="number" name="productUnitPrice" value={productArray[index]["productUnitPrice"]} placeholder="Unit Price"/></td>
+      <td><input style={{width: "88%"}} type="number" name="productTotalPrice" value={productArray[index]["productTotalPrice"]} placeholder="total Price" disabled/></td>
       <td><input type="text" style={{width: "150px", height:"65px"}}  /></td>
       <button className="deleteButton" onClick={() => {deleteProduct(index)}}> Delete</button>
     </tr>
@@ -96,6 +96,10 @@ const Dashboard = () => {
   }
 
   const saveProductDetails = () => {
+    if (billing_info["shippingDate"] < billing_info["billingDate"]) {
+      alert("Shipping Date should be greater that billing Date");
+      return;
+    }
     DashBoardData.billingEntries = billing_info;
     DashBoardData.shippingEntries = shipping_info;
     DashBoardData.productEntries = productArray;
