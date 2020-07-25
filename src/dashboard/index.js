@@ -96,7 +96,8 @@ const Dashboard = () => {
   }
 
   const saveProductDetails = () => {
-    if (billing_info["shippingDate"] < billing_info["billingDate"]) {
+    // console.log(billing_info["shippingDate"], billing_info["billingDate"])
+    if (shipping_info["shippingDate"] < billing_info["billingDate"]) {
       alert("Shipping Date should be greater that billing Date");
       return;
     }
