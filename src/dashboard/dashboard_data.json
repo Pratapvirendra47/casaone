@@ -1,0 +1,36 @@
+{
+  "fromType" : [
+    "Billing Address",
+    "Shipping Address"
+  ],
+  "formData" : [
+    "First Name",
+    "Last Name",
+    "Address line 1",
+    "Address line 2",
+    "City",
+    "State",
+    "Zipcode",
+    "Country"
+  ],
+  "billingEntries" : {},
+  "shippingEntries" : {},
+  "productData" : [
+    "Product ID",
+    "Product Name",
+    "QTY",
+    "Unit Price",
+    "Total Price",
+    "Notes"
+  ],
+  "productEntries" : [
+    {
+      "productId": "1234",
+      "productName": "Hello wolrd",
+      "productNotes": "",
+      "productQuantity": "2",
+      "productTotalPrice": 1998,
+      "productUnitPrice": "999"
+    }
+  ]
+}
