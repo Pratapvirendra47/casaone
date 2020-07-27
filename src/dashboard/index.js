@@ -44,12 +44,12 @@ const getProductListing = () => {
 const getProductArray = (index, updateProductDetails, productArray, deleteProduct) => {
   return (
     <tr onChange={(e)=> {updateProductDetails(index, e)}} style={{lineHeight: "70px"}}>
-      <td><input style={{width: "88%"}} type="number" name="productId" value={productArray[index]["productId"]} placeholder="Enter Product Id"   /></td>
-      <td><input style={{width: "90%"}}type = "text" name="productName" value={productArray[index]["productName"]} placeholder= "Enter Product Name"/></td>
-      <td><input style={{width: "88%"}} type="number" name="productQuantity" value={productArray[index]["productQuantity"]} placeholder="Enter QTY"/></td>
-      <td><input style={{width: "88%"}} type="number" name="productUnitPrice" value={productArray[index]["productUnitPrice"]} placeholder="Unit Price"/></td>
-      <td><input style={{width: "88%"}} type="number" name="productTotalPrice" value={productArray[index]["productTotalPrice"]} placeholder="total Price" disabled/></td>
-      <td><input type="text" style={{width: "150px", height:"65px"}}  /></td>
+      <td><input className="productInput"  type="number" name="productId" value={productArray[index]["productId"]} placeholder="Enter Product Id"   /></td>
+      <td><input className="productNameInput" type = "text" name="productName" value={productArray[index]["productName"]} placeholder= "Enter Product Name"/></td>
+      <td><input className="productInput"  type="number" name="productQuantity" value={productArray[index]["productQuantity"]} placeholder="Enter QTY"/></td>
+      <td><input className="productInput"  type="number" name="productUnitPrice" value={productArray[index]["productUnitPrice"]} placeholder="Unit Price"/></td>
+      <td><input className="productInput"  type="number" name="productTotalPrice" value={productArray[index]["productTotalPrice"]} placeholder="total Price" disabled/></td>
+      <td><input type="text" className="productTextBox" /></td>
       <button className="deleteButton" onClick={() => {deleteProduct(index)}}> Delete</button>
     </tr>
   )
@@ -121,43 +121,47 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="parentDiv">
-      <div className="addressStyle">
-        <span style={{marginRight: '100px', fontSize: "20px"}}>
-          <b> Billing Address</b>
-          {getFormdata(setBillingInfo, billing_info)}
-          <b>Order Date</b> <br />
-          <input type="date" name="billingDate" onChange={(e)=>{setBillingInfo(e)}}/>
-        </span>
-        <span style={{fontSize: "20px"}}>
-          <b>Shipping Address</b>
-          {getFormdata(setShippingInfo, shipping_info)}
-          <b>Shipping Date</b> <br />
-          <input type="date" name="shippingDate" onChange={(e) => {setShippingInfo(e)}}/>
-        </span>
-      </div>
-      <div className="productStyle">
-        <table>
-          <thead>
-            {getProductListing()}
-          </thead>
-          {
-            productArray.length > 0 ?
-              productArray.map((value, index) => {
-                return (
-                  <tbody>
-                    {getProductArray(index, updateProductDetails, productArray, deleteProduct)}
-                  </tbody>
-                )
-              }):
-            null
-          }
-        </table>
-        <div>
-          <button className="addButton" onClick={() => {addProducts()}}>Add Product</button>
+    <div className="backgroundDiv">
+      <div className="container-data">
+        <div className="addressStyle">
+          <div className="billingStyle">
+            <h4> Billing Address</h4>
+            {getFormdata(setBillingInfo, billing_info)}
+            <h4>Order Date</h4> <br />
+            <input type="date" name="billingDate" onChange={(e)=>{setBillingInfo(e)}}/>
+          </div>
+          <div className="shippingStyle">
+            <h4>Shipping Address</h4>
+            {getFormdata(setShippingInfo, shipping_info)}
+            <h4>Shipping Date</h4> <br />
+            <input type="date" name="shippingDate" onChange={(e) => {setShippingInfo(e)}}/>
+          </div>
         </div>
-        <div style={{marginBottom: "20px"}}>
-          <button className="saveButton" onClick={() => {saveProductDetails()}}>Save</button>
+        <div className="productStyle">
+          <table className="productsTable">
+            <thead>
+              {getProductListing()}
+            </thead>
+            {
+              productArray.length > 0 ?
+                productArray.map((value, index) => {
+                  return (
+                    <tbody>
+                      {getProductArray(index, updateProductDetails, productArray, deleteProduct)}
+                    </tbody>
+                  )
+                }):
+              null
+            }
+          </table>
+          <div className="buttonStyling">
+            <div>
+              <button className="addButton" onClick={() => {addProducts()}}>Add Product</button>
+            </div>
+            <div>
+              <button className="saveButton" onClick={() => {saveProductDetails()}}>Save</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
